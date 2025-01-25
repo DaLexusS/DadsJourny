@@ -54,6 +54,33 @@ public class SoundManager : MonoBehaviour
        
         SoundPoolManager.Instance.PlaySound(sound.clip, 1f) ;
     }
+
+    public void PlaySound(SoundType soundType, SoundName soundName, float volume)
+    {
+        if (soundType == SoundType.Music)
+        {
+
+        }
+        // Find the category
+        var category = soundCategories.Find(cat => cat.type == soundType);
+        if (category == null)
+        {
+            Debug.LogWarning($"Sound category '{soundType}' not found.");
+            return;
+        }
+
+        // Find the sound
+        var sound = category.sounds.Find(s => s.name == soundName);
+        if (sound == null || sound.clip == null)
+        {
+            Debug.LogWarning($"Sound '{soundName}' not found in category '{soundType}'.");
+            return;
+        }
+
+        // Play sound through SoundPoolManager
+
+        SoundPoolManager.Instance.PlaySound(sound.clip, volume);
+    }
 }
 
 [System.Serializable]

@@ -16,8 +16,11 @@ public class PlayerMovement : MonoBehaviour
     private CheckGrounded isGround;
     private SpriteRenderer playerVisual;
 
+    private float currentTime;
+    private float coolDown = 0.35f;
     private void Awake()
     {
+        currentTime = Time.time;
         playerRigid = player.GetComponent<Rigidbody2D>();
         isGround = GroundCheckerObject.GetComponent<CheckGrounded>();
         playerVisual = playerSprite.GetComponent<SpriteRenderer>();
@@ -27,6 +30,15 @@ public class PlayerMovement : MonoBehaviour
     {
         HandleMovement();
         HandleJump();
+    }
+
+    public void checkIfcanStep()
+    {
+        if (Time.time > currentTime && isGround.isGrounded)
+        {
+            currentTime = Time.time + coolDown;
+            SoundManager.Instance.PlaySound(SoundType.PlayerSounds, SoundName.Player_FootStep, 0.55f);
+        }
     }
 
     void HandleMovement()
@@ -39,13 +51,19 @@ public class PlayerMovement : MonoBehaviour
             moveInput = -1f;
             isWalking = true;
             playerVisual.flipX = true;
+            checkIfcanStep();
+
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             moveInput = 1f;
             isWalking = true;
             playerVisual.flipX = false;
+            checkIfcanStep();
+
+
         }
+
 
         walkingState.Invoke(isWalking);
 
@@ -59,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isGround.isGrounded)
             {
+                SoundManager.Instance.PlaySound(SoundType.PlayerSounds , SoundName.Player_JumpStart, 0.7f);
                 playerRigid.AddForce(new Vector2(0f, playerSettings.JumpPower));
                 OnJumping.Invoke();
             }

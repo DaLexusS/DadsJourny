@@ -68,6 +68,7 @@ public class BubbleDrag : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             DetectBubble();
+
         }
 
         if (isDragging)
@@ -96,6 +97,7 @@ public class BubbleDrag : MonoBehaviour
         {
             isDragging = false;
             transform.gameObject.GetComponent<PolygonCollider2D>().isTrigger = false;
+            
         }
     }
 
@@ -106,7 +108,7 @@ public class BubbleDrag : MonoBehaviour
 
         if (hit.collider != null && hit.collider.CompareTag("Bubble"))
         {
-
+            SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Click_OnBubble, 0.5f);
             isDragging = true;
         }
     }

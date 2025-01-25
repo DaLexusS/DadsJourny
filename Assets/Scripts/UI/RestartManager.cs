@@ -37,6 +37,9 @@ public class RestartManager : MonoBehaviour
     }
     public void RestartScene()
     {
+        SoundManager.Instance.PlaySound(SoundType.Narration, SoundName.Level_Lost, 0.5f);
+        SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Erase, 2);
+        
         EraseAnimator.SetTrigger("CallErase");
         Time.timeScale = 1;
         StartCoroutine(WaitAndDoSomething());
@@ -44,6 +47,8 @@ public class RestartManager : MonoBehaviour
 
     public void LoadNextLevel(int index)
     {
+        SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Erase, 0.8f);
+        SoundManager.Instance.PlaySound(SoundType.Narration , SoundName.Level_Won, 1);
         EraseAnimator.SetTrigger("CallErase");
         StartCoroutine(WaitToLoadNext(index));
     }
@@ -51,12 +56,14 @@ public class RestartManager : MonoBehaviour
     public void LoadFromMenu(int index)
     {
         EraseAnimator.SetTrigger("CallErase");
+        SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Erase, 3);
         StartCoroutine(WaitToLoadNext(index));
     }
 
     public void BackToMenu()
     {
         EraseAnimator.SetTrigger("CallErase");
+        SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Erase, 3);
         Time.timeScale = 1;
         StartCoroutine(WaitAndDoSomething2());
     }

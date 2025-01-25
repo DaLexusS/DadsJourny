@@ -19,7 +19,7 @@ public class LevelMenu : MonoBehaviour
     private void Start()
     {
         int playerLevel = PlayerPrefs.GetInt("Level");
-        Debug.Log("Saved Player Level: " + playerLevel);
+
 
         for (int i = 0; i < levelButtons.Length; i++)
         {
@@ -34,7 +34,7 @@ public class LevelMenu : MonoBehaviour
 
     private void LoadLevel(int levelIndex)
     {
-        Debug.Log("Loading Level: " + levelIndex);
+        SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Click_OnButton, 0.7f);
         loadPressedLevel?.Invoke(levelIndex);
     }
 

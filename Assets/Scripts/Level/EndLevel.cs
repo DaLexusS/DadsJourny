@@ -23,6 +23,7 @@ public class EndLevel : MonoBehaviour
         if (nextSceneIndex == 5)
         {
             callNextLevel.Invoke(0);
+            
         }
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
