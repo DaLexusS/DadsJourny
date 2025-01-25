@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 6005748908335397176}
   - component: {fileID: 3181181143028302713}
   - component: {fileID: 772282612799718950}
+  - component: {fileID: 2175937243857452245}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Bubble_Interactable
@@ -330,3 +331,17 @@ MonoBehaviour:
   obj: {fileID: 5809390615262858461}
   balloons: []
   IsEnabled: 1
+--- !u!114 &2175937243857452245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6386381239044417415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae8333f5c3c0c544b66ffa9ce094f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundType: 1
+  SoundName: 6
