@@ -13,7 +13,7 @@ public class BubbleInteraction : MonoBehaviour
     [SerializeField] public BubbleType myBubbleType;
 
     public BubbleDrag bubbleDrag;
-    public GameObject LastObject;
+    public GameObject LastObject = null;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -37,6 +37,7 @@ public class BubbleInteraction : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (LastObject == null || other.gameObject != LastObject) { return; }
         if (other.CompareTag("Bubble_Interactable") ||
             other.CompareTag("Player") ||
             other.CompareTag("EndGoal"))
