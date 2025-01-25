@@ -19,13 +19,14 @@ public class LevelMenu : MonoBehaviour
             int levelIndex = i + 1;
             
             levelButtons[i].onClick.AddListener(() => LoadLevel(levelIndex));
+
+            Debug.Log(key);
         }
     }
 
     private void LoadLevel(int levelIndex)
     {
         loadPressedLevel.Invoke(levelIndex + 1);
-        //UnityEngine.SceneManagement.SceneManager.LoadScene(levelIndex);
     }
 
     public void QuitGame()

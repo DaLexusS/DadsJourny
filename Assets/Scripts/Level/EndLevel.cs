@@ -34,8 +34,8 @@ public class EndLevel : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         string key= $"Level_ ${currentSceneIndex}_Unlocked";
-        
-        PlayerPrefs.SetInt(key, 1 );
+        int currentLevle = PlayerPrefs.GetInt(key);
+        PlayerPrefs.SetInt(key, currentLevle++);
         PlayerPrefs.Save();
         
         Debug.Log($"Level {currentSceneIndex} completed. Unlocking Level {currentSceneIndex + 1}.");
