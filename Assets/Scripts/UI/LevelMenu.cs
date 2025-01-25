@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class LevelMenu : MonoBehaviour
 {
+    static public UnityAction<int> loadPressedLevel;
     public Button[] levelButtons;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         for (int i = 0; i < levelButtons.Length; i++)
@@ -15,7 +17,6 @@ public class LevelMenu : MonoBehaviour
             levelButtons[i].interactable = isUnlocked;
 
             int levelIndex = i + 1;
-            Debug.Log($"assigning button {i} to load scene {levelIndex}");
             
             levelButtons[i].onClick.AddListener(() => LoadLevel(levelIndex));
         }
@@ -23,6 +24,12 @@ public class LevelMenu : MonoBehaviour
 
     private void LoadLevel(int levelIndex)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(levelIndex);
+        loadPressedLevel.Invoke(levelIndex + 1);
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(levelIndex);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
