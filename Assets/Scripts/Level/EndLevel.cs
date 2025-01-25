@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class EndLevel : MonoBehaviour
 {
+    static public UnityAction<int> callNextLevel;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("PlayerCharacter"))
@@ -22,12 +24,9 @@ public class EndLevel : MonoBehaviour
 
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene(nextSceneIndex);
-            Debug.Log("moved to next level");
-        }
-        else
-        {
-            Debug.Log("no more levels");
+            callNextLevel.Invoke(nextSceneIndex);
+            //SceneManager.LoadScene(nextSceneIndex);
+            //Debug.Log("moved to next level");
         }
     }
 
