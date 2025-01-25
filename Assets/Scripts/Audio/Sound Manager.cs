@@ -30,6 +30,10 @@ public class SoundManager : MonoBehaviour
     /// <param name="soundName">The name of the sound to play.</param>
     public void PlaySound(SoundType soundType, SoundName soundName)
     {
+        if (soundType == SoundType.Music)
+        {
+
+        }
         // Find the category
         var category = soundCategories.Find(cat => cat.type == soundType);
         if (category == null)
@@ -73,7 +77,8 @@ public enum SoundType
 {
     Music,
     Narration,
-    UI
+    UI,
+    PlayerSounds
 }
 
 /// <summary>
@@ -82,5 +87,7 @@ public enum SoundType
 public enum SoundName
 {
     BackgroundMusic,
-   Bubble_Dad,Bubble_Flag,Bubble_Stone,Level_Won,Level_Lost,Bubble_Spike,Bubble_Bulder,Bubble_Box,Game_Won
+   Bubble_Dad,Bubble_Flag,Bubble_Stone,Level_Won,Level_Lost,Bubble_Spike,Bubble_Bulder,Bubble_Box,Game_Won,
+   Click_OnBubble, Erase, Click_OnButton,
+   Player_FootStep, Player_JumpStart, Player_Landing, Player_BoxLending
 }
