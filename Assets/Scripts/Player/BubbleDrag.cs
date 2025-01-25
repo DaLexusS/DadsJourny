@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class BubbleDrag : MonoBehaviour
 {
@@ -6,6 +7,56 @@ public class BubbleDrag : MonoBehaviour
 
     public bool isDragging = false;
     private Camera cam;
+    [SerializeField] Sprite DefaultSprite; //texture num 1
+    [SerializeField] Sprite WhileMoving;//texture num 2
+    //[SerializeField] Sprite Glow_NouseCursor; //texture num 3
+    [SerializeField] Sprite ActiveSprite; //texture num 4
+    [SerializeField] SpriteRenderer MySpriteRenderer;
+    [SerializeField] BubbleInteraction bubbleInteraction;
+
+
+    public void SwapBubbleSprite(int textureNum)
+    {
+        // Create a Sprite from the Texture2D based on the input number
+        switch (textureNum)
+        {
+            case 1:
+                ComapreAndReplaceSprites(DefaultSprite);
+                break;
+            case 2:
+                ComapreAndReplaceSprites(WhileMoving);
+                break;
+            case 3:
+               // ComapreAndReplaceSprites(Glow_NouseCursor);
+                break;
+            case 4:
+                ComapreAndReplaceSprites(ActiveSprite);
+                break;
+            default:
+                Debug.LogWarning("Invalid texture number.");
+                break;
+        }
+    }
+    private void ComapreAndReplaceSprites( Sprite sprite2) 
+    {
+        if (MySpriteRenderer.sprite == sprite2)
+        {
+            return;
+        }
+        else if (MySpriteRenderer.sprite == ActiveSprite  && sprite2 == DefaultSprite)
+        {
+            return;
+        }
+        else
+        {
+            MySpriteRenderer.sprite = sprite2;
+            return;
+        }
+      
+    }
+    
+
+
 
     void Start()
     {
@@ -21,6 +72,11 @@ public class BubbleDrag : MonoBehaviour
 
         if (isDragging)
         {
+            if (bubbleInteraction.LastObject == null)
+            {
+                SwapBubbleSprite(2); // ben swaps textures
+            }
+           
             transform.gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
             Vector3 fixedWithZPosition = GetMouseWorldPosition();
             fixedWithZPosition.z = 0;
@@ -30,6 +86,10 @@ public class BubbleDrag : MonoBehaviour
 
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, fixedWithZPosition, playerSettings.BubbleDragSmooth);
             transform.position = smoothedPosition;
+        }
+        else
+        {
+            SwapBubbleSprite(1);
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -46,6 +106,7 @@ public class BubbleDrag : MonoBehaviour
 
         if (hit.collider != null && hit.collider.CompareTag("Bubble"))
         {
+
             isDragging = true;
         }
     }

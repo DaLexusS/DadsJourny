@@ -28,6 +28,7 @@ public class BubbleInteraction : MonoBehaviour
                     ObjectDisappear bubbleObject = collision.gameObject.GetComponent<ObjectDisappear>();
                     bubbleObject.ToggleObject();
                     LastObject = collision.gameObject;
+                    bubbleDrag.SwapBubbleSprite(4);
                     break;
                 default:
                     break;
