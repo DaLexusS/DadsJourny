@@ -82,9 +82,5 @@ public enum SoundType
 public enum SoundName
 {
     BackgroundMusic,
-    VictoryTheme,
-    ButtonClick,
-    Interaction1,
-    Interaction2,
-    Notification
+   Bubble_Dad,Bubble_Flag,Bubble_Stone,Level_Won,Level_Lost,Bubble_Spike,Bubble_Bulder,Bubble_Box,Game_Won
 }

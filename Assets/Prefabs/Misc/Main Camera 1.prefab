@@ -166,6 +166,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCategories:
+  - type: 1
+    sounds:
+    - name: 1
+      clip: {fileID: 8300000, guid: 4c9da4cc7e238bd41981ecf8b2835081, type: 3}
+    - name: 2
+      clip: {fileID: 8300000, guid: 64571377c721b764d9d7e4b92da53669, type: 3}
+    - name: 3
+      clip: {fileID: 8300000, guid: c45a3fdeb7a5fdf4caa94bb0df290c05, type: 3}
+    - name: 4
+      clip: {fileID: 8300000, guid: c4b5c7e38df1b2742a29ff45fd3aa15e, type: 3}
+    - name: 5
+      clip: {fileID: 8300000, guid: 16e9ac6d94c3f3444bc85c4a4976e458, type: 3}
+    - name: 6
+      clip: {fileID: 8300000, guid: c1118bbc8485c3641a91dec65c123054, type: 3}
+    - name: 7
+      clip: {fileID: 8300000, guid: e7ef29db662920540b3d83ded55bbf5b, type: 3}
+    - name: 8
+      clip: {fileID: 8300000, guid: c1ea807d6610eb14f86bb08d87919468, type: 3}
+    - name: 9
+      clip: {fileID: 8300000, guid: ae18e448a87492c4db220f55c20aaa17, type: 3}
   - type: 0
     sounds:
     - name: 0
