@@ -34,7 +34,7 @@ public class LevelMenu : MonoBehaviour
 
     private void LoadLevel(int levelIndex)
     {
-        SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Click_OnButton, 0.7f);
+        SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Click_OnButton, 0.4f);
         loadPressedLevel?.Invoke(levelIndex);
     }
 

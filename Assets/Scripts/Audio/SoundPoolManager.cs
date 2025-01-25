@@ -5,7 +5,7 @@ public class SoundPoolManager : MonoBehaviour
     public static SoundPoolManager Instance;
 
     private AudioSource[] soundPool;
-    private int poolSize = 10;
+    private int poolSize = 50;
 
     private void Awake()
     {

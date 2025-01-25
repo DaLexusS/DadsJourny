@@ -1,9 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Events;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class RestartManager : MonoBehaviour
 {
@@ -38,7 +36,7 @@ public class RestartManager : MonoBehaviour
     public void RestartScene()
     {
         SoundManager.Instance.PlaySound(SoundType.Narration, SoundName.Level_Lost, 0.5f);
-        SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Erase, 2);
+        SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Erase, 1);
         
         EraseAnimator.SetTrigger("CallErase");
         Time.timeScale = 1;
