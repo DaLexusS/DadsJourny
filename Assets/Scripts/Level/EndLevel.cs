@@ -20,7 +20,10 @@ public class EndLevel : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
-
+        if (nextSceneIndex == 5)
+        {
+            callNextLevel.Invoke(0);
+        }
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
             callNextLevel.Invoke(nextSceneIndex);
