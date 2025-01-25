@@ -17,6 +17,8 @@ public class RestartManager : MonoBehaviour
     {
         EndLevel.callNextLevel += LoadNextLevel;
         DeathOnTouch.onPlayerDeath += RestartScene;
+        LevelMenu.loadPressedLevel += LoadFromMenu;
+
         EraseAnimator = eraseEffect.GetComponent<Animator>();
         rawImageComponnet = rawImage.GetComponent<RawImage>().color;
         rawImageComponnet.a = 1f;
@@ -31,6 +33,7 @@ public class RestartManager : MonoBehaviour
     {
         DeathOnTouch.onPlayerDeath -= RestartScene;
         EndLevel.callNextLevel -= LoadNextLevel;
+        LevelMenu.loadPressedLevel -= LoadFromMenu;
     }
     public void RestartScene()
     {
@@ -40,6 +43,12 @@ public class RestartManager : MonoBehaviour
     }
 
     public void LoadNextLevel(int index)
+    {
+        EraseAnimator.SetTrigger("CallErase");
+        StartCoroutine(WaitToLoadNext(index));
+    }
+
+    public void LoadFromMenu(int index)
     {
         EraseAnimator.SetTrigger("CallErase");
         StartCoroutine(WaitToLoadNext(index));
