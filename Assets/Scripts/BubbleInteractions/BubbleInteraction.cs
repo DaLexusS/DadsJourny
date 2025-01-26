@@ -19,10 +19,7 @@ public class BubbleInteraction : MonoBehaviour
     {
 
         if (LastObject != null) { return; }
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log(SoundType.Narration); Debug.Log(SoundName.Bubble_Dad);
-        }
+       
         if (collision.gameObject.CompareTag("Bubble_Interactable") ||
             collision.gameObject.CompareTag("Player") ||
             collision.gameObject.CompareTag("EndGoal"))

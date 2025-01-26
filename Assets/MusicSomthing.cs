@@ -8,5 +8,6 @@ public class MusicSomthing : MonoBehaviour
     private void OnDisable()
     {
         SoundManager.Instance.PlaySound(soundType, SoundName, 10f);
+        Debug.Log(gameObject.name+"is trying to play ondisable");
     }
 }

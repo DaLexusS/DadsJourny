@@ -4,36 +4,42 @@ using System.Collections.Generic;
 //This is how you call sounds :  SoundManager.Instance.PlaySound(SoundType.Music, SoundName.BackgroundMusic);
 public class SoundManager : MonoBehaviour
 {
+    private float timer = 0f;
     public static SoundManager Instance;
 
     [SerializeField]
     private List<SoundCategory> soundCategories; // List of sound categories with organized sounds
 
+    private SoundName lastPlayedNarrationSound = SoundName.BackgroundMusic; // Default value
+    private float lastNarrationPlayTime = 0.1f; // Ensures first play is unrestricted
+    private float narrationCooldown = 2f; // Cooldown in seconds for narration sounds
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Optional: keep SoundManager alive across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
     }
- 
 
-    /// <summary>
-    /// Plays a sound based on the type and name.
-    /// </summary>
-    /// <param name="soundType">The type of the sound (e.g., Music, Narration, UI).</param>
-    /// <param name="soundName">The name of the sound to play.</param>
-    public void PlaySound(SoundType soundType, SoundName soundName)
+    public void PlaySound(SoundType soundType, SoundName soundName, float volume = 1f)
     {
-        if (soundType == SoundType.Music)
+        if (soundType == SoundType.Narration)
         {
+            if (soundName == lastPlayedNarrationSound && Time.time - lastNarrationPlayTime < narrationCooldown)
+            {
+                Debug.Log($"Narration sound '{soundName}' skipped due to cooldown.");
+                return; // Skip playing if the same sound is within the cooldown
+            }
 
+            lastPlayedNarrationSound = soundName;
+            lastNarrationPlayTime = Time.time; // Update the last played time
         }
+
         // Find the category
         var category = soundCategories.Find(cat => cat.type == soundType);
         if (category == null)
@@ -50,36 +56,9 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        // Play sound through SoundPoolManager
-       
-        SoundPoolManager.Instance.PlaySound(sound.clip, 1f) ;
-    }
-
-    public void PlaySound(SoundType soundType, SoundName soundName, float volume)
-    {
-        if (soundType == SoundType.Music)
-        {
-
-        }
-        // Find the category
-        var category = soundCategories.Find(cat => cat.type == soundType);
-        if (category == null)
-        {
-            Debug.LogWarning($"Sound category '{soundType}' not found.");
-            return;
-        }
-
-        // Find the sound
-        var sound = category.sounds.Find(s => s.name == soundName);
-        if (sound == null || sound.clip == null)
-        {
-            Debug.LogWarning($"Sound '{soundName}' not found in category '{soundType}'.");
-            return;
-        }
-
-        // Play sound through SoundPoolManager
-
+        // Play the sound
         SoundPoolManager.Instance.PlaySound(sound.clip, volume);
+       // Debug.Log($"Played sound '{soundName}' of type '{soundType}'.");
     }
 }
 
@@ -116,5 +95,5 @@ public enum SoundName
     BackgroundMusic,
    Bubble_Dad,Bubble_Flag,Bubble_Stone,Level_Won,Level_Lost,Bubble_Spike,Bubble_Bulder,Bubble_Box,Game_Won,
    Click_OnBubble, Erase, Click_OnButton,
-   Player_FootStep, Player_JumpStart, Player_Landing, Player_BoxLending
+   Player_FootStep, Player_JumpStart, Player_Landing, Player_BoxLending,Bubble_Daddy,
 }

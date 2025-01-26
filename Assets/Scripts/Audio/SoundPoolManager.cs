@@ -27,22 +27,27 @@ public class SoundPoolManager : MonoBehaviour
 
     public void PlaySound(AudioClip clip, float volume = 1.0f)
     {
+       // Debug.Log($"sound pool Playing sound: {clip.name}, Volume: {volume}");
         if (clip == null) return;
 
         foreach (AudioSource source in soundPool)
         {
+            if (source == null) return;
             if (!source.isPlaying)
-            {
-                source.clip = clip;
-                source.volume = volume;
-                source.Play();
-                return;
-            }
+                {
+                    source.clip = clip;
+                    source.volume = volume;
+                    source.Play();
+                    return;
+                }
         }
-
-        soundPool[0].Stop();
-        soundPool[0].clip = clip;
-        soundPool[0].volume = volume;
-        soundPool[0].Play();
+        if (soundPool.Length > 0)
+        {
+            soundPool[0].Stop();
+            soundPool[0].clip = clip;
+            soundPool[0].volume = volume;
+            soundPool[0].Play();
+        }
+         
     }
 }
