@@ -6,8 +6,8 @@ public class DeathOnTouch : MonoBehaviour
     static public UnityAction onPlayerDeath;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Was collided");
-        if (!collision.gameObject.CompareTag("PlayerCharacter")) { return; }
+        if (!collision.gameObject.CompareTag("PlayerCharacter")) { Debug.Log("Was collided but not with PlayerCharacter"); return; }
+        Debug.Log("collided with player, invoking death");
         onPlayerDeath.Invoke();
     }
 }
