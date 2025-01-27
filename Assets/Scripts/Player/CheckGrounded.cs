@@ -7,18 +7,18 @@ public class CheckGrounded : MonoBehaviour
     static public UnityAction onLanded;
     static public UnityAction<bool> AirBorn;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
         isGrounded = true;
         AirBorn.Invoke(false);
         onLanded.Invoke();
-
     }
-
-    private void OnCollisionExit2D(Collision2D collision)
+  
+    private void OnTriggerExit2D(Collider2D collision)
     {
         isGrounded = false;
         AirBorn.Invoke(true);
     }
+
+  
 }
