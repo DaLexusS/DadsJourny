@@ -29,6 +29,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(SoundType soundType, SoundName soundName, float volume = 1f)
     {
+      
         if (soundType == SoundType.Narration)
         {
             // if this happens we want the last narration sound to stop

@@ -20,12 +20,12 @@ public class ObjectDisappear : MonoBehaviour
             {
                 Debug.LogError("object dissapear had no musicsomthig refrence, from "+ gameObject.name);
             }
-           
+           if (balloons.Length > 0) { 
             foreach (FloatLogic baloon in balloons)
             {
                 baloon.EnableFloating();
             }
-
+            }
         }
 
         obj.SetActive(IsEnabled);
