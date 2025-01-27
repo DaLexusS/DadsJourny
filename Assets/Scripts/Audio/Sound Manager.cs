@@ -4,7 +4,6 @@ using System.Collections.Generic;
 //This is how you call sounds :  SoundManager.Instance.PlaySound(SoundType.Music, SoundName.BackgroundMusic);
 public class SoundManager : MonoBehaviour
 {
-    private float timer = 0f;
     public static SoundManager Instance;
 
     [SerializeField]

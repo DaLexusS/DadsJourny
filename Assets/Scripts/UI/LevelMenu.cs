@@ -40,6 +40,7 @@ public class LevelMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Click_OnButton, 0.4f);
         Application.Quit();
     }
 }

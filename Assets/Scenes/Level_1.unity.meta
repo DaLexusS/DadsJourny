@@ -1,14 +1,7 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Ben Shader Things/Material WIth Highlight.mat.meta
 guid: fa8a095e49587ec4783e6a108bec1dda
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 2100000
-========
-guid: db897aa8f47d45540a3ac429631b709e
 DefaultImporter:
   externalObjects: {}
->>>>>>>> MichaelBranch:Assets/Scenes/Level_1.unity.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

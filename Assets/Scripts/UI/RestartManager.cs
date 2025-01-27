@@ -35,6 +35,7 @@ public class RestartManager : MonoBehaviour
     }
     public void RestartScene()
     {
+        SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Click_OnButton, 0.4f);
         SoundManager.Instance.PlaySound(SoundType.Narration, SoundName.Level_Lost, 0.5f);
         SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Erase, 1);
         
@@ -60,6 +61,7 @@ public class RestartManager : MonoBehaviour
 
     public void BackToMenu()
     {
+        SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Click_OnButton, 0.4f);
         EraseAnimator.SetTrigger("CallErase");
         SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Erase, 3);
         Time.timeScale = 1;
