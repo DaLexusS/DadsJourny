@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4613646387181742431}
   - component: {fileID: 6709784231702571016}
   - component: {fileID: 4647556537707378360}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Physical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 2643974126329588540}
   - component: {fileID: 7680219801458148114}
   - component: {fileID: 7496674090956551275}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rock
   m_TagString: Bubble_Interactable
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5964943856870424211}
   - component: {fileID: 4428357499331306213}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

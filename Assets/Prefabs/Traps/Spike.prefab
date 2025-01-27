@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8318503646407851505}
   - component: {fileID: 332402293505141538}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 7426088750292889991}
   - component: {fileID: 7525749145745706631}
   - component: {fileID: 5717956876647578728}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Physical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 3181181143028302713}
   - component: {fileID: 772282612799718950}
   - component: {fileID: 2175937243857452245}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Spike
   m_TagString: Bubble_Interactable
   m_Icon: {fileID: 0}
@@ -330,6 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 5809390615262858461}
   balloons: []
+  DisableSound: {fileID: 0}
   IsEnabled: 1
 --- !u!114 &2175937243857452245
 MonoBehaviour:

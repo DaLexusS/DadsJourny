@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4052255952221018800}
   - component: {fileID: 8602290292728694694}
   - component: {fileID: 2020041326532916425}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DoubleBox
   m_TagString: Bubble_Interactable
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8391912057500014892}
   - component: {fileID: 7179793384677976876}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: IMG_0840
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 8941609903685254221}
   - component: {fileID: 1170325914096995451}
   - component: {fileID: 4946199096896340877}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Physical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4224752922709798229}
   - component: {fileID: 989000799383372132}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: IMG_0840 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
