@@ -181,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 8012683494509319351}
   balloons: []
+  DisableSound: {fileID: 3141933280988719002}
   IsEnabled: 1
 --- !u!1 &8012683494509319351
 GameObject:

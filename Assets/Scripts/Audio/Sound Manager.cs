@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour
     private SoundName lastPlayedNarrationSound = SoundName.BackgroundMusic; // Default value
     private float lastNarrationPlayTime = 0.1f; // Ensures first play is unrestricted
     private float narrationCooldown = 2f; // Cooldown in seconds for narration sounds
+    private bool IsNarrationSound= false;
     private void Awake()
     {
         if (Instance == null)
@@ -30,6 +31,11 @@ public class SoundManager : MonoBehaviour
     {
         if (soundType == SoundType.Narration)
         {
+            // if this happens we want the last narration sound to stop
+            if (soundName != SoundName.Game_Won&& soundName != SoundName.Level_Won)
+            {
+                IsNarrationSound = true;
+            }
             if (soundName == lastPlayedNarrationSound && Time.time - lastNarrationPlayTime < narrationCooldown)
             {
                 Debug.Log($"Narration sound '{soundName}' skipped due to cooldown.");
@@ -38,6 +44,10 @@ public class SoundManager : MonoBehaviour
 
             lastPlayedNarrationSound = soundName;
             lastNarrationPlayTime = Time.time; // Update the last played time
+        }
+        else
+        {
+            IsNarrationSound = false;
         }
 
         // Find the category
@@ -57,7 +67,7 @@ public class SoundManager : MonoBehaviour
         }
 
         // Play the sound
-        SoundPoolManager.Instance.PlaySound(sound.clip, volume);
+        SoundPoolManager.Instance.PlaySound(sound.clip, volume, IsNarrationSound);
        // Debug.Log($"Played sound '{soundName}' of type '{soundType}'.");
     }
 }

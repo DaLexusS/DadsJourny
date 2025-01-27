@@ -6,6 +6,7 @@ public class SoundPoolManager : MonoBehaviour
 
     private AudioSource[] soundPool;
     private int poolSize = 50;
+    AudioClip LastNarrationPlayed; // LIST OF PLAYED NARRATIONS
 
     private void Awake()
     {
@@ -25,21 +26,23 @@ public class SoundPoolManager : MonoBehaviour
         }
     }
 
-    public void PlaySound(AudioClip clip, float volume = 1.0f)
+    public void PlaySound(AudioClip clip, float volume = 1.0f, bool IsNarrationSound = false)
     {
-       // Debug.Log($"sound pool Playing sound: {clip.name}, Volume: {volume}");
+        // Debug.Log($"sound pool Playing sound: {clip.name}, Volume: {volume}");
         if (clip == null) return;
 
         foreach (AudioSource source in soundPool)
         {
             if (source == null) return;
             if (!source.isPlaying)
-                {
-                    source.clip = clip;
-                    source.volume = volume;
-                    source.Play();
-                    return;
-                }
+            {
+                HandleNarrationOverlap(clip, IsNarrationSound);
+
+                source.clip = clip;
+                source.volume = volume;
+                source.Play();
+                return;
+            }
         }
         if (soundPool.Length > 0)
         {
@@ -48,6 +51,21 @@ public class SoundPoolManager : MonoBehaviour
             soundPool[0].volume = volume;
             soundPool[0].Play();
         }
-         
+
+    }
+
+    private void HandleNarrationOverlap(AudioClip clip, bool IsNarrationSound)
+    {
+        if (IsNarrationSound)
+        {
+            foreach (AudioSource i in soundPool)
+            {
+                if (i.clip == LastNarrationPlayed)
+                {
+                    i.Stop();
+                }
+            }
+            LastNarrationPlayed = clip;
+        }
     }
 }

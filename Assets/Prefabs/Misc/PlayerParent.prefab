@@ -151,8 +151,8 @@ Transform:
   m_GameObject: {fileID: 6460523015788962744}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -13.6, z: 0}
-  m_LocalScale: {x: 12.5, y: 12.5, z: 12.5}
+  m_LocalPosition: {x: 0, y: -13.76, z: 0}
+  m_LocalScale: {x: 95.625, y: 12.5, z: 12.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1449754553532458709}
@@ -328,6 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 6779745464007883672}
   balloons: []
+  DisableSound: {fileID: 3894422149304400404}
   IsEnabled: 1
 --- !u!61 &4690678324942374913
 BoxCollider2D:
