@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3941803129983597271}
   - component: {fileID: 755544552141064014}
   - component: {fileID: 8373201518831222136}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 9149076259902000229}
   - component: {fileID: 6955329579581471543}
   - component: {fileID: 26336362862620002}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 3874633613379133575}
   - component: {fileID: 5570768871363241807}
   - component: {fileID: 3894422149304400404}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 3605410612085279644}
   - component: {fileID: 5828780803530389112}
   - component: {fileID: 4690678324942374913}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerParent
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 1449754553532458709}
   - component: {fileID: 1218212563221483800}
   - component: {fileID: 6593223232092110147}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: PlayerCharacter
   m_TagString: PlayerCharacter
   m_Icon: {fileID: 0}

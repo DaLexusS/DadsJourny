@@ -30,7 +30,10 @@ public class AnimationEvents : MonoBehaviour
     {
         animator.SetTrigger("Jump");
     }
-
+    private void OnEnable()
+    {
+        animator.SetTrigger("OnEnable");
+    }
     private void OnDestroy()
     {
         CheckGrounded.onLanded -= onLanded;
