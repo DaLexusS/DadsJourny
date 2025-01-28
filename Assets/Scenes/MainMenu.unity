@@ -599,7 +599,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 415772950608625434, guid: 228222f9297f67d47bae3a74bec8167a, type: 3}
       propertyPath: m_Name
-      value: Sounds (DontDestory)
+      value: (DontDestory) Manager
       objectReference: {fileID: 0}
     - target: {fileID: 735102361967320786, guid: 228222f9297f67d47bae3a74bec8167a, type: 3}
       propertyPath: m_Volume
