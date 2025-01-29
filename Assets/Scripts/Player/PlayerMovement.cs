@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
@@ -51,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
             isWalking = true;
             playerVisual.flipX = true;
             checkIfcanStep();
-
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
@@ -59,15 +58,16 @@ public class PlayerMovement : MonoBehaviour
             isWalking = true;
             playerVisual.flipX = false;
             checkIfcanStep();
-
-
         }
-
 
         walkingState.Invoke(isWalking);
 
-        playerRigid.linearVelocity = new Vector2(moveInput * playerSettings.WalkSpeed, playerRigid.linearVelocity.y);
+        // ✅ Only modify the X velocity, preserving Y velocity
+        Vector2 currentVelocity = playerRigid.linearVelocity;
+        currentVelocity.x = moveInput * playerSettings.WalkSpeed;
+        playerRigid.linearVelocity = currentVelocity;
     }
+
 
 
     void HandleJump()
