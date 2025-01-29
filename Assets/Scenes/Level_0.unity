@@ -1618,6 +1618,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.21
       objectReference: {fileID: 0}
+    - target: {fileID: 772282612799718950, guid: bd472dce565ac0d489c31a25c5e9422a, type: 3}
+      propertyPath: DisableSound
+      value: 
+      objectReference: {fileID: 920414613}
     - target: {fileID: 6005748908335397176, guid: bd472dce565ac0d489c31a25c5e9422a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.68
@@ -1677,6 +1681,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6005748908335397176, guid: bd472dce565ac0d489c31a25c5e9422a, type: 3}
   m_PrefabInstance: {fileID: 920414611}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &920414613 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2175937243857452245, guid: bd472dce565ac0d489c31a25c5e9422a, type: 3}
+  m_PrefabInstance: {fileID: 920414611}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae8333f5c3c0c544b66ffa9ce094f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1073433924
 GameObject:
   m_ObjectHideFlags: 0
