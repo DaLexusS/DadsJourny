@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 6407209177485901972}
   - component: {fileID: 4091930321912967194}
   - component: {fileID: 637203873521388813}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DestroyBubble
   m_TagString: Bubble
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ PolygonCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: 200000
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295

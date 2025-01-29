@@ -104,7 +104,8 @@ public class BubbleDrag : MonoBehaviour
     void DetectBubble()
     {
         Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+        int targetLayer = LayerMask.GetMask("CloudLayer");
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero,100f, targetLayer);
 
         if (hit.collider != null && hit.collider.CompareTag("Bubble"))
         {

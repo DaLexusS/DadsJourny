@@ -2941,10 +2941,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6709784231702571016, guid: c681e62f77c8ecb40af968f1267e3d9c, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7496674090956551275, guid: c681e62f77c8ecb40af968f1267e3d9c, type: 3}
       propertyPath: DisableSound
       value: 
       objectReference: {fileID: 2114998035}
+    - target: {fileID: 7680219801458148114, guid: c681e62f77c8ecb40af968f1267e3d9c, type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: -20
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4647556537707378360, guid: c681e62f77c8ecb40af968f1267e3d9c, type: 3}
     m_RemovedGameObjects: []
