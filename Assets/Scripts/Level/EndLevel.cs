@@ -6,10 +6,15 @@ using UnityEngine.SceneManagement;
 public class EndLevel : MonoBehaviour
 {
     static public UnityAction<int> callNextLevel;
+    [SerializeField] Tutorial tutorial;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("PlayerCharacter"))
         {
+            if (tutorial)
+            {
+                tutorial.Finish();
+            }
             MarkLevelComplete();
             LoadNextLevel();
         }

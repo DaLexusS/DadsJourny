@@ -13,6 +13,7 @@ public class BubbleDrag : MonoBehaviour
     [SerializeField] Sprite ActiveSprite; //texture num 4
     [SerializeField] SpriteRenderer MySpriteRenderer;
     [SerializeField] BubbleInteraction bubbleInteraction;
+    [SerializeField] Tutorial tutorial;
 
 
     public void SwapBubbleSprite(int textureNum)
@@ -109,8 +110,12 @@ public class BubbleDrag : MonoBehaviour
 
         if (hit.collider != null && hit.collider.CompareTag("Bubble"))
         {
+            if (tutorial)
+            {
+                tutorial.MovedBubble = true;
+            }
+            
             SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Click_OnBubble, 0.5f);
-            print("raycast hit "+hit.collider.gameObject.name);
             isDragging = true;
         }
     }

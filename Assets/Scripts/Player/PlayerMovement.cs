@@ -10,10 +10,12 @@ public class PlayerMovement : MonoBehaviour
     public GameObject playerSprite;
     public PlayerSettings playerSettings;
     public GameObject GroundCheckerObject;
+    public Tutorial tutorial;
 
     private Rigidbody2D playerRigid;
     private CheckGrounded isGround;
     private SpriteRenderer playerVisual;
+
 
     private float currentTime;
     private float coolDown = 0.35f;
@@ -37,6 +39,11 @@ public class PlayerMovement : MonoBehaviour
         {
             currentTime = Time.time + coolDown;
             SoundManager.Instance.PlaySound(SoundType.PlayerSounds, SoundName.Player_FootStep, 0.55f);
+            if (tutorial)
+            {
+                tutorial.MovedPlayer = true;
+            }
+
         }
     }
 
@@ -79,6 +86,10 @@ public class PlayerMovement : MonoBehaviour
                 SoundManager.Instance.PlaySound(SoundType.PlayerSounds , SoundName.Player_JumpStart, 0.7f);
                 playerRigid.AddForce(new Vector2(0f, playerSettings.JumpPower));
                 OnJumping.Invoke();
+                if (tutorial)
+                {
+                    tutorial.Jumped = true;
+                }
             }
         }
     }
