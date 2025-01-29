@@ -2614,7 +2614,7 @@ MonoBehaviour:
   JumpBlinkDelay: 0.4
   MoveBlinkactivatedelay: 0.5
   MoveBlinkDeactivateDelay: 2
-  TutorialTimer: 8.08
+  TutorialTimer: 20
   TutorialFinishTimer: 30
   BubbleArrow: {fileID: 1984880761}
   MovmentArrows:

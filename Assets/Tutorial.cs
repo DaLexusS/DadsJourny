@@ -47,7 +47,7 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TutorialFlag|| Finished) { return; }
+        if (TutorialFlag || Finished) { return; }
         timer += Time.deltaTime;
         print(((int)timer));
         if (timer > TutorialTimer)
@@ -57,7 +57,7 @@ public class Tutorial : MonoBehaviour
             {
                 ToggleResetTimerAndFlag();
 
-                StartCoroutine(SimpleBlink(BubbleArrow, BubleBlinkCount, BubleBlinkDelay));
+                StartCoroutine(SimpleBubbleBlink(BubbleArrow, BubleBlinkCount, BubleBlinkDelay));
             }
             else if (!MovedPlayer)
             {
@@ -78,7 +78,7 @@ public class Tutorial : MonoBehaviour
             {
 
                 ToggleResetTimerAndFlag();
-                StartCoroutine(SimpleBlink(FinishArrows, BubleBlinkCount, BubleBlinkDelay));
+                StartCoroutine(SimpleFinishBlink(FinishArrows, BubleBlinkCount, BubleBlinkDelay));
 
 
             }
@@ -90,7 +90,7 @@ public class Tutorial : MonoBehaviour
 
         //save everything in playerprefs
     }
-  
+
     public void OnEnable()
     {
         timer = 0;
@@ -98,13 +98,37 @@ public class Tutorial : MonoBehaviour
 
     }
 
-    IEnumerator SimpleBlink(GameObject myObject, int times, float delay)
+    IEnumerator SimpleBubbleBlink(GameObject myObject, int times, float delay)
     {
 
         for (int i = 0; i < times; i++)
         {
-            myObject.SetActive(true);
-            yield return new WaitForSeconds(delay);
+            if (!MovedBubble)
+            {
+                myObject.SetActive(true);
+                yield return new WaitForSeconds(delay);
+            }
+            myObject.SetActive(false);
+            if (!MovedBubble)
+            {
+                yield return new WaitForSeconds(delay);
+            }
+               
+
+        }
+        ToggleResetTimerAndFlag();
+    }
+
+    IEnumerator SimpleFinishBlink(GameObject myObject, int times, float delay)
+    {
+
+        for (int i = 0; i < times; i++)
+        {
+            if (!Finished)
+            {
+                myObject.SetActive(true);
+                yield return new WaitForSeconds(delay);
+            }
             myObject.SetActive(false);
             yield return new WaitForSeconds(delay);
 
@@ -123,10 +147,16 @@ public class Tutorial : MonoBehaviour
 
         for (int i = 0; i < myObjects.Length; i++)
         {
-            myObjects[i].SetActive(true);
-            yield return new WaitForSeconds(Activedelay);
+            if (!MovedPlayer)
+            {
+                myObjects[i].SetActive(true);
+                yield return new WaitForSeconds(Activedelay);
+            }
         }
-        yield return new WaitForSeconds(DeactivateDelay);
+        if (!MovedPlayer)
+        {
+            yield return new WaitForSeconds(DeactivateDelay);
+        }
         for (int i = 0; i < myObjects.Length; i++)
         {
             myObjects[i].SetActive(false);
@@ -142,11 +172,16 @@ public class Tutorial : MonoBehaviour
 
             for (int J = 0; J < myObjects.Length; J++)
             {
-                myObjects[J].SetActive(true);
-                yield return new WaitForSeconds(delay);
-            }
+                if (!Jumped)
+                {
+                    myObjects[J].SetActive(true);
+                    yield return new WaitForSeconds(delay);
+                }
 
-            yield return new WaitForSeconds(delay);
+            }
+            if (!Jumped)
+            { yield return new WaitForSeconds(delay); }
+
 
 
             for (int h = 0; h < myObjects.Length; h++)
