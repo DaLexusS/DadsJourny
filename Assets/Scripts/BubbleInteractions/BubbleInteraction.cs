@@ -24,6 +24,7 @@ public class BubbleInteraction : MonoBehaviour
             collision.gameObject.CompareTag("Player") ||
             collision.gameObject.CompareTag("EndGoal"))
         {
+          
             switch (myBubbleType)
             {
                 case BubbleType.Destroy:

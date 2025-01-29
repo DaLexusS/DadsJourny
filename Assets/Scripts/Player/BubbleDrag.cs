@@ -70,7 +70,7 @@ public class BubbleDrag : MonoBehaviour
             DetectBubble();
 
         }
-
+          
         if (isDragging)
         {
             if (bubbleInteraction.LastObject == null)
@@ -109,6 +109,7 @@ public class BubbleDrag : MonoBehaviour
         if (hit.collider != null && hit.collider.CompareTag("Bubble"))
         {
             SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Click_OnBubble, 0.5f);
+            print("raycast hit "+hit.collider.gameObject.name);
             isDragging = true;
         }
     }
