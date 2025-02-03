@@ -49,5 +49,8 @@ TagManager:
   - name: Background
     uniqueID: 864264529
     locked: 0
+  - name: Ending Vid
+    uniqueID: 2298701841
+    locked: 0
   m_RenderingLayers:
   - Default

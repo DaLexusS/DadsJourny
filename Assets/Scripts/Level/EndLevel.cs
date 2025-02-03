@@ -9,6 +9,7 @@ public class EndLevel : MonoBehaviour
     static public UnityAction<int> callNextLevel;
     [SerializeField] Tutorial tutorial;
     [SerializeField] GameEndingSequence gameEndingSequence;
+    [SerializeField] GameObject EndingVidDisplayTexture;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -34,16 +35,30 @@ public class EndLevel : MonoBehaviour
         }
         else
         {
-            //  Call GameEndingSequence to play the video and fade out
+            // ✅ Ensure the video UI is active before playing
+            if (EndingVidDisplayTexture)
+            {
+                EndingVidDisplayTexture.SetActive(true);
+            }
+
+            // ✅ Play the Ending Video
             gameEndingSequence.StartEndingSequence();
-            return; // Prevent further scene loading
         }
     }
 
     public void OnGameEndingFinished()
     {
-        // ✅ Called when GameEndingSequence is finished - go to the main menu
-        callNextLevel.Invoke(0);
+        Debug.Log("Game Ending Finished - Moving to Main Menu");
+
+        // ✅ Ensure we move to the Main Menu (Scene 0)
+        if (callNextLevel != null)
+        {
+            callNextLevel.Invoke(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(0); // Fallback if event is missing
+        }
     }
 
     void MarkLevelComplete()

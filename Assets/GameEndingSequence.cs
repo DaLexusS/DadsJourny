@@ -1,44 +1,105 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 using UnityEngine.Video;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameEndingSequence : MonoBehaviour
 {
     public VideoPlayer EndingVid;
-    public Image fadeImage; // UI Image for fading effect
-    public float fadeDuration = 2f; // Adjust fade speed
-    public UnityEvent onEndingComplete; // Invoked when the ending sequence is done
+    public RawImage EndingVidDisplayTexture; // UI Image that shows the video
+    public RenderTexture EndingVideoTexture; // Assigned in the Inspector
+    public UnityEvent onEndingComplete; // Event to trigger scene transition
 
     public void StartEndingSequence()
     {
-        // ✅ Activate and play the video
-        EndingVid.gameObject.SetActive(true);
-        EndingVid.Play();
+        // ✅ Pause the game
+        Time.timeScale = 0;
 
-        // ✅ Start fading out after video starts
-        StartCoroutine(FadeOutVideo());
+        // ✅ Assign the Render Texture (Prevents blank screen issues)
+        EndingVid.targetTexture = EndingVideoTexture;
+        EndingVidDisplayTexture.texture = EndingVideoTexture;
+
+        // ✅ Ensure the `RawImage` is fully hidden
+        EndingVidDisplayTexture.gameObject.SetActive(false);
+
+        // ✅ Set first frame ready events
+        EndingVid.sendFrameReadyEvents = true;
+        EndingVid.frameReady += OnFirstFrameReady;
+
+        // ✅ Prepare the video
+        EndingVid.Prepare();
+
+        // ✅ Start waiting for the video to load
+        StartCoroutine(PrepareAndPlayVideo());
     }
 
-    private IEnumerator FadeOutVideo()
+    private void OnFirstFrameReady(VideoPlayer source, long frameIdx)
     {
-        float timer = 0f;
-        Color fadeColor = fadeImage.color;
+        // ✅ Ensure the first frame is properly assigned before making the video visible
+        EndingVidDisplayTexture.gameObject.SetActive(true);
 
-        while (timer < fadeDuration)
+        // ✅ Remove event listener after the first frame is ready
+        EndingVid.frameReady -= OnFirstFrameReady;
+    }
+
+    private IEnumerator PrepareAndPlayVideo()
+    {
+        // ✅ Wait until the video is fully prepared
+        while (!EndingVid.isPrepared)
         {
-            timer += Time.deltaTime;
-            fadeColor.a = timer / fadeDuration; // Gradually increase transparency
-            fadeImage.color = fadeColor;
             yield return null;
         }
 
-        //  Ensure video is fully faded out
+        // ✅ Ensure the video starts from the beginning
+        EndingVid.time = 0;
+        EndingVid.frame = 0;
+
+        // ✅ Ensure Unity fully updates before making the video visible
+        yield return new WaitForEndOfFrame();
+
+        // ✅ Play the video
+        EndingVid.Play();
+
+        // ✅ Now wait for it to finish
+        StartCoroutine(WaitForVideoToEnd());
+    }
+
+    private IEnumerator WaitForVideoToEnd()
+    {
+        // ✅ Wait until the video actually starts playing
+        while (!EndingVid.isPlaying)
+        {
+            yield return null;
+        }
+
+        // ✅ Wait until the video finishes
+        while (EndingVid.isPlaying)
+        {
+            yield return null;
+        }
+
+        // ✅ Stop video properly and clear the screen
         EndingVid.Stop();
+        EndingVid.targetTexture.Release(); // Clears the video display
+        EndingVidDisplayTexture.gameObject.SetActive(false);
+
+        // ✅ Hide the video object safely
         EndingVid.gameObject.SetActive(false);
 
-        // Notify EndLevel script that the ending is done
-        onEndingComplete.Invoke();
+        // ✅ Unpause the game
+        Time.timeScale = 1;
+
+        // ✅ Ensure the game moves to the main menu
+        if (onEndingComplete != null)
+        {
+            onEndingComplete.Invoke();
+        }
+        else
+        {
+            Debug.LogWarning("onEndingComplete event is not set! Manually loading Scene 0.");
+            SceneManager.LoadScene(0); // ✅ Fallback to manually load the main menu
+        }
     }
 }
