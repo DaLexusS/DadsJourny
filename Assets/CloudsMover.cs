@@ -25,17 +25,27 @@ public class CloudsMover : MonoBehaviour
     private float NextSpawnTimer = 0f;
     void Start()
     {
+       
+    }
+    private void OnEnable()
+    {
         MyInstantiatedObjects.Clear();
 
-        SpawnSomeStartingClouds();
+        SpawnAndPlaceStartingClouds();
     }
-
-    private void SpawnSomeStartingClouds()
+    private void SpawnAndPlaceStartingClouds()
     {
-        var rand = Random.Range(1, 5);
+        var rand = Random.Range(1, 5); // spawn between 1 and 5 clouds
         for (int i = 0; i < rand; i++)
         {
             SpawnObject();
+        }
+       
+        for (int i = 0; i < MyInstantiatedObjects.Count; i++)
+        {
+            var rand2 = Random.Range(1, 1000); //make them move randomly 
+            float MySpeed = MyObjectsSpeed[i];
+            MyInstantiatedObjects[i].transform.Translate((Vector2.left * MySpeed * Time.deltaTime* rand2));
         }
     }
 
