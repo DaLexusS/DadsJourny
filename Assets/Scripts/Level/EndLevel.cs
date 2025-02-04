@@ -31,6 +31,7 @@ public class EndLevel : MonoBehaviour
 
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
+            SoundManager.Instance.PlaySound(SoundType.Narration, SoundName.Game_Won, 1);
             callNextLevel.Invoke(nextSceneIndex);
         }
         else
