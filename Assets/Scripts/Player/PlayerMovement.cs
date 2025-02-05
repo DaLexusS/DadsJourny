@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
     public GameObject GroundCheckerObject;
     public Tutorial tutorial;
     public ParticleSystem jumpDust;
+    public ParticleSystem DustRight;
+    public ParticleSystem DustLeft;
+
+
 
     private Rigidbody2D playerRigid;
     private CheckGrounded isGround;
@@ -37,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnEnable()
     {
-                HasEverJumped = false;
+        HasEverJumped = false;
     }
 
     void HandleJump()
@@ -64,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         if (!HasEverJumped) return;
 
         // ✅ Detect if the player was falling before landing
-        if (wasFalling && isGround.isGrounded )
+        if (wasFalling && isGround.isGrounded)
         {
             SoundManager.Instance.PlaySound(SoundType.PlayerSounds, SoundName.Player_Landing, 0.7f);
 
@@ -87,6 +91,12 @@ public class PlayerMovement : MonoBehaviour
             moveInput = -1f;
             isWalking = true;
             playerVisual.flipX = true;
+            if (IsWalkingFast())
+            {
+                DustRight.Play();
+                DustLeft.Stop();
+            }
+
             if (tutorial)
             {
                 tutorial.MovedPlayer = true;
@@ -97,6 +107,13 @@ public class PlayerMovement : MonoBehaviour
             moveInput = 1f;
             isWalking = true;
             playerVisual.flipX = false;
+            if (IsWalkingFast())
+            {
+                DustLeft.Play();
+                DustRight.Stop();
+            }
+
+
             if (tutorial)
             {
                 tutorial.MovedPlayer = true;
@@ -106,8 +123,13 @@ public class PlayerMovement : MonoBehaviour
         walkingState.Invoke(isWalking);
 
         Vector2 currentVelocity = playerRigid.linearVelocity;
+        // DustLeft.Stop(); DustRight.Stop() ;
         currentVelocity.x = moveInput * playerSettings.WalkSpeed;
         playerRigid.linearVelocity = currentVelocity;
+    }
+    public bool IsWalkingFast()
+    {
+        return playerRigid.linearVelocity.x >= 7f || playerRigid.linearVelocity.x <= -7f;
     }
 }
 
