@@ -8,11 +8,15 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField]
     private List<SoundCategory> soundCategories; // List of sound categories with organized sounds
+    [SerializeField] private bool MuteSounds = false;
+    [SerializeField] private bool MuteMusic = false;
+    [SerializeField] AudioSource MusicSource;
 
     private SoundName lastPlayedNarrationSound = SoundName.BackgroundMusic; // Default value
     private float lastNarrationPlayTime = 0.1f; // Ensures first play is unrestricted
     private float narrationCooldown = 2f; // Cooldown in seconds for narration sounds
     private bool IsNarrationSound= false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -24,11 +28,30 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        CheckIfMutedMusic();
     }
 
+    private void CheckIfMutedMusic()
+    {
+       
+            MusicSource.mute = MuteMusic;
+    }
+    public void ToggleMuteMusic() 
+    {
+        MuteMusic = !MuteMusic;
+        CheckIfMutedMusic();
+    }
+
+    public void ToggleMuteSounds()
+    {
+        MuteSounds = !MuteSounds;
+    }
     public void PlaySound(SoundType soundType, SoundName soundName, float volume = 1f)
     {
-      
+        CheckIfMutedMusic();
+      if (MuteSounds && soundType != SoundType.Music) { return; }
+
         if (soundType == SoundType.Narration)
         {
             // if this happens we want the last narration sound to stop
