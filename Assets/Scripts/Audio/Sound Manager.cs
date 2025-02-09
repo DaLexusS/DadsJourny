@@ -8,8 +8,8 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField]
     private List<SoundCategory> soundCategories; // List of sound categories with organized sounds
-    [SerializeField] private bool MuteSounds = false;
-    [SerializeField] private bool MuteMusic = false;
+    [SerializeField] public bool MuteSounds = false;
+    [SerializeField] public bool MuteMusic = false;
     [SerializeField] AudioSource MusicSource;
 
     private SoundName lastPlayedNarrationSound = SoundName.BackgroundMusic; // Default value
