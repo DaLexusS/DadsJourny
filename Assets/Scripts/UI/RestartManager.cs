@@ -47,7 +47,7 @@ public class RestartManager : MonoBehaviour
     public void LoadNextLevel(int index)
     {
         SoundManager.Instance.PlaySound(SoundType.UI, SoundName.Erase, 0.8f);
-        SoundManager.Instance.PlaySound(SoundType.Narration , SoundName.Level_Won, 1);
+        if (index != 0) { SoundManager.Instance.PlaySound(SoundType.Narration, SoundName.Level_Won, 1); }
         EraseAnimator.SetTrigger("CallErase");
         StartCoroutine(WaitToLoadNext(index));
     }

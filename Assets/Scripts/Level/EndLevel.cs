@@ -31,7 +31,6 @@ public class EndLevel : MonoBehaviour
 
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            SoundManager.Instance.PlaySound(SoundType.Narration, SoundName.Game_Won, 1);
             callNextLevel.Invoke(nextSceneIndex);
         }
         else
@@ -40,11 +39,13 @@ public class EndLevel : MonoBehaviour
             if (EndingVidDisplayTexture)
             {
                 EndingVidDisplayTexture.SetActive(true);
+                SoundManager.Instance.PlaySound(SoundType.Narration,SoundName.Game_Won); 
             }
 
             // ✅ Play the Ending Video
             gameEndingSequence.StartEndingSequence();
         }
+      
     }
 
     public void OnGameEndingFinished()

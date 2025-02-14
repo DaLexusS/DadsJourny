@@ -29,6 +29,10 @@ public class LevelMenu : MonoBehaviour
                 levelButtons[i].interactable = true;
                 levelButtons[i].onClick.AddListener(() => LoadLevel(levelIndex));
             }
+            else
+            {
+                levelButtons[i].interactable = false;
+            }
         }
     }
 
