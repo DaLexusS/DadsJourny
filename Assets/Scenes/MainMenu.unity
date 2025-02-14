@@ -794,6 +794,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -133.63895
       objectReference: {fileID: 0}
+    - target: {fileID: 3801842959396006650, guid: 592c5eee26064fe47946ec386f0e516b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 0.7607843
+      objectReference: {fileID: 0}
     - target: {fileID: 3842307323693606004, guid: 592c5eee26064fe47946ec386f0e516b, type: 3}
       propertyPath: m_Type
       value: 0
@@ -814,6 +818,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4662104625317927457, guid: 592c5eee26064fe47946ec386f0e516b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 0.7607843
+      objectReference: {fileID: 0}
     - target: {fileID: 4667603948986413352, guid: 592c5eee26064fe47946ec386f0e516b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -11.4
@@ -830,6 +838,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -5889749906266933800, guid: 53245a1fbc2c9e046b5437fb84949078, type: 3}
+    - target: {fileID: 4887541064480441969, guid: 592c5eee26064fe47946ec386f0e516b, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887541064480441969, guid: 592c5eee26064fe47946ec386f0e516b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 0.7607843
+      objectReference: {fileID: 0}
     - target: {fileID: 6363133840660274259, guid: 592c5eee26064fe47946ec386f0e516b, type: 3}
       propertyPath: m_fontColor.b
       value: 0
@@ -861,6 +877,10 @@ PrefabInstance:
     - target: {fileID: 7690674660007541467, guid: 592c5eee26064fe47946ec386f0e516b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -2.977
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917943101387583086, guid: 592c5eee26064fe47946ec386f0e516b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 0.7607843
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
